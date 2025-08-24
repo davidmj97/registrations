@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Church Festival Registration</title>
+  <style>
+    :root{
+      --white:#ffffff;
+      --black:#0a0a0a;
+      --green:#16a34a;    /* green-600 */
+      --green-dark:#15803d; /* green-700 */
+      --gray-50:#f9fafb;
+      --gray-100:#f3f4f6;
+      --gray-300:#d1d5db;
+      --gray-500:#6b7280;
+      --gray-700:#374151;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--white);
+      color: var(--black);
+      line-height:1.5;
+    }
+    .wrap{
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    header{
+      display:grid;
+      gap:10px;
+      margin: 8px 0 22px;
+    }
+    h1{
+      font-size: clamp(28px, 4vw, 40px);
+      margin:0;
+      letter-spacing:-.02em;
+    }
+    .lede{
+      color: var(--gray-700);
+      max-width: 60ch;
+      margin:0;
+    }
+    .pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--gray-300);
+      background: var(--gray-100);
+      color: var(--black);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:14px;
+    }
+    .card{
+      background: var(--white);
+      border:1px solid var(--gray-300);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    form{
+      display:grid;
+      gap:16px;
+    }
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width:720px){
+      .grid{grid-template-columns: 1fr 1fr}
+      .span2{grid-column: span 2}
+    }
+    label{
+      display:block;
+      font-weight:600;
+      margin-bottom:6px;
+    }
+    .hint{font-size:12px;color:var(--gray-500)}
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select{
+      width:100%;
+      border:1px solid var(--gray-300);
+      border-radius:12px;
+      padding:12px 14px;
+      font: inherit;
+      background: var(--white);
+      color: var(--black);
+      outline:none;
+      transition: box-shadow .2s ease, border-color .2s ease;
+    }
+    input::placeholder, textarea::placeholder{color:var(--gray-500)}
+    input:focus, textarea:focus, select:focus{
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(22,163,74,.15);
+    }
+    .row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .checkbox{
+      display:flex; align-items:center; gap:10px;
+      font-weight:500; color:var(--gray-700)
+    }
+    .checkbox input{width:18px; height:18px}
+    .total{
+      font-weight:700; color: var(--green);
+    }
+    .actions{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-top:8px;
+    }
+    button{
+      appearance:none; border:0; cursor:pointer;
+      padding:12px 18px; border-radius:12px; font-weight:700;
+      background: var(--green); color: var(--white);
+      transition: transform .04s ease, background .2s ease;
+    }
+    button:hover{background: var(--green-dark)}
+    button:active{transform: translateY(1px)}
+    .btn-secondary{
+      background: var(--gray-100); color: var(--black); border:1px solid var(--gray-300);
+    }
+    footer{margin-top:14px; color:var(--gray-500); font-size:12px}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Greenwood Church Festival — Registration</h1>
+      <p class="lede">Join us for food, music, games, and community. Please register so we can plan well — it takes 30 seconds.</p>
+      <div class="pills">
+        <span class="pill" id="date-pill">📅 Saturday, October 18, 2025 • 10:00–16:00</span>
+        <span class="pill" id="loc-pill">📍 Greenwood Parish Grounds, 17 Kirkkotie, Helsinki</span>
+      </div>
+    </header>
+
+    <main class="card">
+      <!--
+        IMPORTANT:
+        Replace YOUR_WEB_APP_URL_HERE below with your Google Apps Script Web App URL (Step 3).
+      -->
+      <form id="rsvp" action="https://script.google.com/macros/s/AKfycbxgAl2U_hPxKcUxa4eoXw7pYUhS6G4D6JSp5_s2WyaQ4YihB_f8DM_vXpNmtEotwIKC/exec" method="POST" accept-charset="UTF-8" onsubmit="return handleSend()">
+        <!-- Honeypot (spam trap) -->
+        <div class="sr-only" aria-hidden="true">
+          <label>Leave this field empty
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
+
+        <!-- Visible fields -->
+        <div class="grid">
+          <div>
+            <label for="fullName">Full name *</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Jane Doe" required />
+          </div>
+
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="jane@example.com" required />
+          </div>
+
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+358 40 123 4567" />
+          </div>
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="adults">Adults</label>
+              <input id="adults" name="adults" type="number" inputmode="numeric" min="0" value="1" />
+            </div>
+            <div style="flex:1">
+              <label for="children">Children</label>
+              <input id="children" name="children" type="number" inputmode="numeric" min="0" value="0" />
+            </div>
+            <div class="row" style="flex:1; min-width:200px; align-self:flex-end; padding-bottom:6px">
+              <span>Total guests:</span>
+              <span class="total" id="totalGuests">1</span>
+            </div>
+          </div>
+
+          <div class="span2 checkbox">
+            <input id="volunteer" name="volunteer" type="checkbox" value="Yes" />
+            <label for="volunteer" style="margin:0">I’m happy to help as a volunteer</label>
+          </div>
+
+          <div class="span2">
+            <label for="notes">Anything we should know?</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Dietary needs, accessibility, etc."></textarea>
+            <div class="hint">We’ll only use your details for this event.</div>
+          </div>
+        </div>
+
+        <!-- These get saved to Sheets too -->
+        <input type="hidden" name="festivalDate" value="Saturday, October 18, 2025" />
+        <input type="hidden" name="festivalLocation" value="Greenwood Parish Grounds, 17 Kirkkotie, Helsinki" />
+        <input type="hidden" name="_ua" value="" />
+
+        <div class="actions">
+          <button id="submitBtn" type="submit">Submit registration</button>
+          <button class="btn-secondary" type="reset">Reset</button>
+        </div>
+
+        <footer>By submitting, you consent to us storing your details for the purpose of managing this festival.</footer>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    // Simple dynamic bits
+    const adults = document.getElementById('adults');
+    const children = document.getElementById('children');
+    const totalGuests = document.getElementById('totalGuests');
+    const uaField = document.querySelector('input[name="_ua"]');
+    uaField.value = navigator.userAgent;
+
+    function updateTotal(){
+      const a = parseInt(adults.value || 0, 10);
+      const c = parseInt(children.value || 0, 10);
+      totalGuests.textContent = Math.max(0, a) + Math.max(0, c);
+    }
+    adults.addEventListener('input', updateTotal);
+    children.addEventListener('input', updateTotal);
+    updateTotal();
+
+    function handleSend(){
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      // Let the browser POST the form to Apps Script (no JS fetch = no CORS headaches)
+      return true;
+    }
+  </script>
+</body>
+</html>
+
