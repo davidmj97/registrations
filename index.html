@@ -4,16 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Church Festival Registration</title>
+  <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --green: #22c55e;
       --green-dark: #15803d;
-      --gray: #334155;
+      --gray: #475569;
       --gray-mid: #64748b;
       --gray-light: #f1f5f9;
       --white: #ffffff;
-      --black: #0f172a;
+      --black: #111827;
     }
 
     html {
@@ -28,89 +29,126 @@
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--gray-light);
       color: var(--black);
-      min-height: 100vh;
-      font-size: 16px;
+      font-size: 15px;
       letter-spacing: 0.01em;
+      min-height: 100vh;
     }
 
     .header {
+      width: 100%;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
-      padding: 28px 5vw 24px 5vw;
-      background: linear-gradient(90deg, var(--white) 60%, var(--gray-light) 100%);
-      border-bottom: 1.5px solid #e2e8f0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 24px;
+      background: var(--green);
+      border-bottom: 1px solid #e2e8f0;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 2px 8px rgba(34,197,94,.08);
     }
-    @media (min-width: 600px) {
-      .header {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-      }
-    }
-
     .date {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 9px;
     }
     .day {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: 2.6rem;
       font-weight: 800;
-      color: var(--green-dark);
+      color: var(--white);
       line-height: 1;
       letter-spacing: -0.03em;
-      text-shadow: 0 2px 6px rgba(34,197,94,.07);
     }
     .month-year {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-size: 0.9rem;
       font-weight: 600;
       text-transform: uppercase;
-      color: var(--gray-mid);
-      letter-spacing: 0.07em;
+      color: var(--white);
+      letter-spacing: 0.06em;
     }
     .title {
-      font-size: clamp(1.3rem, 4vw, 2.3rem);
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--black);
-      letter-spacing: -0.01em;
-      margin-top: 4px;
-      text-shadow: 0 2px 6px #e2e8f0;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      margin-top: 2px;
+      text-align: right;
+      flex: 1;
+    }
+
+    /* Festival info below header */
+    .festival-details {
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 14px;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,.03);
+      border-radius: 12px;
+      padding: 22px 24px 16px 24px;
+      font-size: 0.97rem;
+      color: var(--gray);
+    }
+    .festival-details h3 {
+      font-size: 1.07rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin: 0 0 7px 0;
+      letter-spacing: 0.01em;
+    }
+    .festival-details p {
+      margin: 0 0 7px 0;
+      font-size: 0.97rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    .details-list {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0 0;
+    }
+    .details-list li {
+      margin-bottom: 6px;
+      font-size: 0.97rem;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .details-list .icon {
+      font-size: 1rem;
+      color: var(--green-dark);
+    }
+    .details-list a {
+      color: var(--green-dark);
+      text-decoration: none;
     }
 
     .map {
-      width: 100%;
-      height: 240px;
-      border: none;
-      margin: 0 auto;
       display: block;
-      border-radius: 18px;
-      box-shadow: 0 2px 12px rgba(34,197,94,.08);
-      margin-top: 24px;
-      margin-bottom: 24px;
-      max-width: 880px;
+      width: 100%;
+      height: 220px;
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(34,197,94,.04);
+      margin: 18px auto 16px auto;
     }
     @media (min-width:700px) {
       .map { height: 300px; }
     }
 
     .form-wrap {
-      padding: 32px 5vw 44px 5vw;
+      width: 100%;
+      margin: 0 auto 34px auto;
+      padding: 32px 20px 36px 20px;
       background: var(--white);
-      margin: 0 auto 48px auto;
-      border-radius: 20px;
-      box-shadow: 0 6px 26px rgba(0,0,0,.08);
-      max-width: 880px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.07);
       position: relative;
       overflow: hidden;
     }
 
     form {
       display: grid;
-      gap: 24px;
+      gap: 18px;
       width: 100%;
     }
 
@@ -127,67 +165,68 @@
     label {
       font-weight: 600;
       display: block;
-      margin-bottom: 7px;
-      color: var(--gray);
-      font-size: clamp(0.96rem, 2vw, 1.06rem);
+      margin-bottom: 6px;
+      color: var(--black);
+      font-size: 0.97rem;
     }
     input, textarea {
       width: 100%;
-      padding: 13px 15px;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
       background: var(--gray-light);
       font: inherit;
-      font-size: 1rem;
+      font-size: 0.97rem;
       color: var(--black);
       transition: border-color .18s, box-shadow .18s;
-      box-shadow: 0 1px 4px rgba(34,197,94,.04);
+      box-shadow: 0 1px 4px rgba(34,197,94,.03);
     }
     input:focus, textarea:focus {
       outline: none;
       border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(34,197,94,.13);
+      box-shadow: 0 0 0 2px rgba(34,197,94,.11);
       background: var(--white);
     }
     textarea {
       resize: vertical;
-      min-height: 44px;
-      max-height: 180px;
+      min-height: 38px;
+      max-height: 120px;
     }
     input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
+      width: 15px;
+      height: 15px;
       accent-color: var(--green);
-      margin-right: 8px;
+      margin-right: 7px;
       vertical-align: middle;
     }
 
     .actions {
       display: flex;
-      gap: 14px;
-      margin-top: 8px;
+      gap: 12px;
+      margin-top: 7px;
       flex-wrap: wrap;
     }
     button {
-      flex: 1 1 180px;
-      padding: 15px 0;
+      flex: 1 1 140px;
+      padding: 12px 0;
       border: none;
-      border-radius: 13px;
+      border-radius: 11px;
       font-weight: 700;
       cursor: pointer;
-      font-size: clamp(0.98rem,2vw,1.07rem);
+      font-size: 0.97rem;
       transition: background .18s, box-shadow .18s, color .18s;
-      box-shadow: 0 2px 8px rgba(34,197,94,.11);
+      box-shadow: 0 2px 7px rgba(34,197,94,.08);
       letter-spacing: 0.01em;
+      font-family: inherit;
     }
     #submitBtn {
-      background: linear-gradient(90deg, var(--green) 60%, var(--green-dark) 100%);
+      background: var(--green);
       color: var(--white);
-      box-shadow: 0 4px 14px rgba(34,197,94,0.21);
+      box-shadow: 0 4px 12px rgba(34,197,94,0.13);
     }
     #submitBtn:hover, #submitBtn:focus {
-      background: linear-gradient(90deg, var(--green-dark) 60%, var(--green) 100%);
-      box-shadow: 0 6px 16px rgba(34,197,94,0.33);
+      background: var(--green-dark);
+      box-shadow: 0 6px 14px rgba(34,197,94,0.17);
     }
     .btn-secondary {
       background: var(--gray-light);
@@ -211,7 +250,7 @@
       align-items: center;
       opacity: 0;
       pointer-events: none;
-      transition: all .28s;
+      transition: all .24s;
       z-index: 1000;
     }
     .modal.show {
@@ -220,58 +259,67 @@
     }
     .modal-content {
       background: var(--white);
-      padding: 36px 28px 28px 28px;
-      border-radius: 20px;
-      max-width: 420px;
-      width: 98vw;
+      padding: 24px 16px 18px 16px;
+      border-radius: 13px;
+      max-width: 350px;
+      width: 96vw;
       text-align: center;
-      box-shadow: 0 12px 32px rgba(34,197,94,.23);
-      animation: scaleIn .28s ease;
+      box-shadow: 0 8px 24px rgba(34,197,94,.19);
+      animation: scaleIn .24s ease;
       position: relative;
+      font-size: 0.99rem;
     }
     @keyframes scaleIn {
-      from { transform: scale(0.85); opacity: 0; }
+      from { transform: scale(0.88); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
     .modal h2 {
-      margin: 0 0 12px 0;
-      font-size: clamp(1.18rem, 3vw, 1.7rem);
+      margin: 0 0 7px 0;
+      font-size: 1.12rem;
       color: var(--green-dark);
-      font-weight: 800;
+      font-weight: 700;
     }
     .modal p {
       margin: 0;
       color: var(--gray);
-      font-size: clamp(1rem,2vw,1.08rem);
+      font-size: 0.99rem;
       font-weight: 600;
     }
     .close-btn {
-      margin-top: 22px;
-      padding: 12px 32px;
+      margin-top: 17px;
+      padding: 10px 22px;
       border: none;
-      border-radius: 12px;
-      background: linear-gradient(90deg, var(--green-dark) 30%, var(--green) 100%);
+      border-radius: 10px;
+      background: var(--green);
       color: var(--white);
-      font-weight: 700;
-      font-size: 1.03rem;
+      font-weight: 600;
+      font-size: 0.93rem;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(34,197,94,.10);
+      box-shadow: 0 2px 7px rgba(34,197,94,.10);
       transition: background .18s, box-shadow .18s;
+      font-family: inherit;
     }
     .close-btn:hover, .close-btn:focus {
-      background: linear-gradient(90deg, var(--green) 30%, var(--green-dark) 100%);
-      box-shadow: 0 4px 14px rgba(34,197,94,.15);
+      background: var(--green-dark);
+      box-shadow: 0 4px 14px rgba(34,197,94,.13);
     }
 
-    /* Responsive font sizes for mobile readability */
-    @media (max-width: 420px) {
-      .form-wrap, .header, .title, .modal-content {
-        padding-left: 4vw;
-        padding-right: 4vw;
+    /* Mobile fixes */
+    @media (max-width: 600px) {
+      .header, .form-wrap, .festival-details {
+        border-radius: 0;
+        padding: 16px 14px;
       }
-      .day { font-size: 2.2rem; }
-      .title { font-size: 1.2rem; }
-      label, input, textarea, button { font-size: 0.97rem; }
+      .day { font-size: 2rem; }
+      .title { font-size: 1rem; text-align: left; }
+      .festival-details h3 { font-size: 1rem; }
+      .festival-details p,
+      .details-list li {
+        font-size: 0.87rem;
+        line-height: 1.4;
+      }
+      .modal-content { padding: 18px 6px 12px 6px; }
+      label, input, textarea, button { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -285,10 +333,25 @@
     <div class="title">Greenwood Church Festival</div>
   </div>
 
+  <!-- Festival Details Section -->
+  <section class="festival-details">
+    <h3>About the Festival</h3>
+    <p>
+      Experience a joyful day at Greenwood Church Festival! Enjoy live music, food stalls, games, and a warm community welcome. Special activities for children and volunteering opportunities available.
+    </p>
+    <ul class="details-list">
+      <li><span class="icon">📅</span><strong>Date:</strong> Saturday, October 18, 2025</li>
+      <li><span class="icon">⏰</span><strong>Time:</strong> 10:00 AM – 6:00 PM</li>
+      <li><span class="icon">📍</span><strong>Location:</strong> Greenwood Parish Grounds, 17 Kirkkotie, Helsinki (near Kamppi Center)</li>
+      <li><span class="icon">📞</span><strong>Contact:</strong> +358 50 123 4567 &nbsp;|&nbsp; <a href="mailto:info@greenwoodfestival.fi">info@greenwoodfestival.fi</a></li>
+      <li><span class="icon">🌱</span><strong>Entry:</strong> Free for all!</li>
+    </ul>
+  </section>
+
   <!-- Map -->
   <iframe class="map"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.1750834208677!2d24.94583131595462!3d60.16985558195517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920a32101efb0d%3A0x9a62be1e3da6f826!2sHelsinki%20Cathedral!5e0!3m2!1sen!2sfi!4v1689965432101"
-    allowfullscreen loading="lazy">
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.1750834208677!2d24.93036121595462!3d60.16985558195517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920a3203eacbe1%3A0x1b4a4e2b5533e1a2!2sKamppi%20Center!5e0!3m2!1sen!2sfi!4v1692888888811"
+    allowfullscreen loading="lazy" title="Kamppi Center, Helsinki">
   </iframe>
 
   <!-- Form -->
@@ -319,20 +382,20 @@
           <label for="children">Children</label>
           <input id="children" name="children" type="number" min="0" value="0">
         </div>
-        <div style="display:flex;align-items:center;min-height:56px;">
-          <label for="volunteer" style="margin-bottom:0;display:flex;align-items:center;gap:8px;">
+        <div style="display:flex;align-items:center;min-height:38px;">
+          <label for="volunteer" style="margin-bottom:0;display:flex;align-items:center;gap:7px;">
             <input type="checkbox" id="volunteer" name="volunteer" value="Yes"> Volunteer
           </label>
         </div>
       </div>
       <div>
         <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" rows="3" placeholder="Any special requirements or comments?"></textarea>
+        <textarea id="notes" name="notes" rows="2" placeholder="Any special requirements or comments?"></textarea>
       </div>
 
       <!-- Hidden -->
       <input type="hidden" name="festivalDate" value="Saturday, October 18, 2025">
-      <input type="hidden" name="festivalLocation" value="Greenwood Parish Grounds, 17 Kirkkotie, Helsinki">
+      <input type="hidden" name="festivalLocation" value="Greenwood Parish Grounds, 17 Kirkkotie, Helsinki (near Kamppi Center)">
       <input type="hidden" name="_ua" value="">
 
       <div class="actions">
@@ -361,7 +424,12 @@
     const thankMessage = document.getElementById('thankMessage');
 
     function openModal(name){
-      thankMessage.textContent = `Dear ${name}, your registration has been received. We look forward to seeing you at the festival 🎉`;
+      thankMessage.innerHTML = `
+        Dear <span style="color:var(--green-dark);font-weight:700;">${name}</span>,<br>
+        Your registration has been received.<br>
+        We look forward to seeing you at the Greenwood Church Festival!<br>
+        <span style="font-size:1.15em;">🎉🌱</span>
+      `;
       modal.classList.add('show');
     }
     function closeModal(){
